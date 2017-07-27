@@ -1,0 +1,262 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+a
+	display: block
+	color: inherit
+	cursor: url(../img/cursor.png), pointer;
+	transition: .5s
+	text-transform: uppercase
+
+	&:hover
+		color: $hover-color
+		text-decoration: none
+
+nav, p, h1, button, ul
+	margin: 0
+	padding: 0
+	list-style: none
+	border: 0
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-size: 14px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: +bold
+	overflow-x: hidden
+	opacity: 1
+	letter-spacing: 1px 
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.container-wrap
+	background: url(../img/bg.png) no-repeat 50% 50%
+	background-size: cover
+	background-position: 0 -50px
+
+.container-inner
+	max-width: 1150px
+	margin: 0 auto
+	padding: 10px 10px 160px
+	.header
+		display: flex
+		flex-wrap: wrap
+		color: #fff
+		.header__contact
+			flex-grow: 1
+			.phone
+				margin-bottom: 25px
+				color: $default-color
+				&:hover
+					color: #fff
+			.mail
+				background: url(../img/sprite.png) -5px -5px no-repeat
+				height: 64px
+
+		.header__menu
+			flex-grow: 2
+			position: relative
+			display: flex
+			align-items: flex-end
+			.menu-list
+				display: flex
+				justify-content: space-between
+				align-items: flex-end
+				height: 100%
+				padding-left: 35px
+				width: 100%
+				li
+					position: relative
+					transition: .5s
+					overflow: hidden
+					&:before
+						content: ''
+						position: absolute
+						bottom: 0
+						left: 0 
+						width: 100%
+						height: 2px
+						background: $default-color
+						transform: translate(-200px, 0)
+						transition: transform .2s linear
+					&:hover
+						&:before
+							transform: translate(0px, 0)
+							
+			.sidebar
+				transition: all .25s ease-out
+				transform: translateX(-100%);
+				width: $sidebar-width
+				background: rgba(0, 0, 0, 0.8)
+				display: flex 
+				position: fixed
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background: rgba(0, 0, 0, 0.8)
+				z-index: 100
+				.menu
+					width: 100%
+					li
+						padding: 15px 0 
+						width: 100%
+						text-align: center
+						transition: .5s
+						position: relative 
+						&:hover
+							background: rgba(245, 245, 245, 0.4)
+							a
+								color: red
+			.input-toggler
+				position: absolute
+				opacity: 0
+				display: none
+			.menu-toggler
+				display: none
+				width: $toggler-size
+				height: $toggler-size
+				position: fixed 
+				top: 10px
+				right: 20px 
+				z-index: 1000
+				.menu-toggler__line
+					background: #fff
+					height: 2px 
+					position: absolute
+					top: 10%
+					left: 30%
+					transition: all .25s ease-out
+					z-index: 10000
+					display: block
+					width: 20px
+					&:nth-child(2)
+						top: 10px
+						width: 15px
+					&:nth-child(3)
+						top: 17px
+				
+			.input-toggler
+				z-index: 100000
+				&:checked ~ 
+					.menu-toggler
+						.menu-toggler__line
+							&:nth-child(1)
+								transform: translateY(10px) rotate(45deg)
+							&:nth-child(2)
+								opacity: 0
+							&:nth-child(3)
+								transform: translateY(-4px) rotate(-45deg)
+					.sidebar
+						transform: translateX(0)
+						opacity: .98
+
+.container-inner 
+	.header 
+		.header__menu 
+			.menu-list 
+				li.active
+					&:hover
+						overflow: visible
+						&:before
+							display: none 
+						.list__item
+							overflow: visible
+							opacity: 1
+							transform: translate(0, 0px)
+							transition: transform .1s linear
+				
+div.list__item
+	overflow: hidden
+	opacity: 0
+	width: 170px
+	background: #fff
+	padding: 20px 40px
+	position: absolute
+	top: 100%
+	left: calc(-100%*2) 
+	color: #000	
+	transform: translate(0, -10px)
+	transition: .5s
+	z-index: 100
+	&:before
+		content: ''
+		position: absolute 
+		margin-top: -10px
+		top: 0
+		left: 48%
+		border: 5px solid
+		border-color: transparent transparent #fff transparent		 
+		background: transparent
+	ul
+		text-align: center
+		position: relative
+		li
+			margin-bottom: 15px
+			z-index: 1000
+			a
+				text-transform: none
+.content
+	margin-top: 80px
+	text-align: center
+	color: #fff
+	.content__title
+		+black
+		text-transform: uppercase
+		font-size: 2.8rem
+		margin-bottom: 30px
+		letter-spacing: 0px
+		z-index: 1!important
+		position: relative 
+		.letter
+			display: inline-block
+	.mobile__title
+		display: none
+	.content__btn
+		background: $default-color
+		width: 210px
+		height: 48px
+		line-height: 48px
+		text-align: center
+		color: #000
+		+black
+		font-size: 16px
+		text-transform: uppercase
+		box-shadow: 0 50px 100px $default-color
+		transition: .5s
+		&:hover
+			color: #f20404
+			box-shadow: 0 0 30px $default-color
+			cursor: url(../img/cursor.png), pointer;
+
+@import "media" // Всегда в конце
